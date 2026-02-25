@@ -1,0 +1,506 @@
+
+
+PRIVATE_LOCAL_CFLAGS = [
+    "-O2",
+    "-g",
+    "-W",
+    "-Wall",
+    "-Wno-error=unused-parameter",
+    "-DSO_RXQ_OVFL=40",
+    "-DPF_CAN=29",
+    "-DAF_CAN=PF_CAN",
+]
+
+//
+// canlib
+//
+
+cc_library_static {
+    name: "libcan",
+
+    srcs: [
+        "lib.c",
+        "canframelen.c",
+    ],
+    local_include_dirs: ["include/"],
+    cflags: PRIVATE_LOCAL_CFLAGS,
+    vendor: true,
+
+}
+
+//
+// j1939lib
+//
+
+cc_library_static {
+    name: "libj1939",
+
+    srcs: ["libj1939.c"],
+    local_include_dirs: ["include/"],
+    cflags: PRIVATE_LOCAL_CFLAGS,
+    vendor: true,
+
+}
+
+//
+// j1939acd
+//
+
+cc_binary {
+    name: "j1939acd",
+
+    srcs: ["j1939acd.c"],
+
+    static_libs: ["libj1939"],
+    local_include_dirs: ["include/"],
+    cflags: PRIVATE_LOCAL_CFLAGS,
+    vendor: true,
+
+}
+
+//
+// j1939cat
+//
+
+cc_binary {
+    name: "j1939cat",
+
+    srcs: ["j1939cat.c"],
+
+    static_libs: ["libj1939"],
+    local_include_dirs: ["include/"],
+    cflags: PRIVATE_LOCAL_CFLAGS,
+    vendor: true,
+
+}
+
+//
+// j1939spy
+//
+
+cc_binary {
+    name: "j1939spy",
+
+    srcs: ["j1939spy.c"],
+
+    static_libs: ["libj1939"],
+    local_include_dirs: ["include/"],
+    cflags: PRIVATE_LOCAL_CFLAGS,
+    vendor: true,
+
+}
+
+//
+// j1939sr
+//
+
+cc_binary {
+    name: "j1939sr",
+
+    srcs: ["j1939sr.c"],
+
+    static_libs: ["libj1939"],
+    local_include_dirs: ["include/"],
+    cflags: PRIVATE_LOCAL_CFLAGS,
+    vendor: true,
+
+}
+
+//
+// testj1939
+//
+
+cc_binary {
+    name: "testj1939",
+
+    srcs: ["testj1939.c"],
+
+    static_libs: ["libj1939"],
+    local_include_dirs: ["include/"],
+    cflags: PRIVATE_LOCAL_CFLAGS,
+    vendor: true,
+
+}
+
+//
+// candump
+//
+
+cc_binary {
+    name: "candump",
+
+    srcs: ["candump.c"],
+
+    static_libs: ["libcan"],
+    local_include_dirs: ["include/"],
+    cflags: PRIVATE_LOCAL_CFLAGS,
+    vendor: true,
+
+}
+
+//
+// cansend
+//
+
+cc_binary {
+    name: "cansend",
+
+    srcs: ["cansend.c"],
+
+    static_libs: ["libcan"],
+    local_include_dirs: ["include/"],
+    cflags: PRIVATE_LOCAL_CFLAGS,
+    vendor: true,
+
+}
+
+//
+// cansequence
+//
+
+cc_binary {
+    name: "cansequence",
+
+    srcs: ["cansequence.c"],
+
+    local_include_dirs: ["include/"],
+    cflags: PRIVATE_LOCAL_CFLAGS,
+
+}
+
+//
+// bcmserver
+//
+
+cc_binary {
+    name: "bcmserver",
+
+    srcs: ["bcmserver.c"],
+
+    local_include_dirs: ["include/"],
+    cflags: PRIVATE_LOCAL_CFLAGS,
+    vendor: true,
+
+}
+
+//
+// can-calc-bit-timing
+//
+
+cc_binary {
+    name: "can-calc-bit-timing",
+
+    srcs: ["can-calc-bit-timing.c"],
+
+    local_include_dirs: ["include/"],
+    cflags: PRIVATE_LOCAL_CFLAGS,
+    vendor: true,
+
+}
+
+//
+// canbusload
+//
+
+cc_binary {
+    name: "canbusload",
+
+    srcs: ["canbusload.c"],
+
+    static_libs: ["libcan"],
+    local_include_dirs: ["include/"],
+    cflags: PRIVATE_LOCAL_CFLAGS,
+    vendor: true,
+
+}
+
+//
+// canfdtest
+//
+
+cc_binary {
+    name: "canfdtest",
+
+    srcs: ["canfdtest.c"],
+
+    local_include_dirs: ["include/"],
+    cflags: PRIVATE_LOCAL_CFLAGS,
+    vendor: true,
+
+}
+
+//
+// cangen
+//
+
+cc_binary {
+    name: "cangen",
+
+    srcs: ["cangen.c"],
+
+    static_libs: ["libcan"],
+    local_include_dirs: ["include/"],
+    cflags: PRIVATE_LOCAL_CFLAGS,
+    vendor: true,
+
+}
+
+//
+// cangw
+//
+
+cc_binary {
+    name: "cangw",
+
+    srcs: ["cangw.c"],
+
+    local_include_dirs: ["include/"],
+    cflags: PRIVATE_LOCAL_CFLAGS,
+    vendor: true,
+
+}
+
+//
+// canlogserver
+//
+
+cc_binary {
+    name: "canlogserver",
+
+    srcs: ["canlogserver.c"],
+
+    static_libs: ["libcan"],
+    local_include_dirs: ["include/"],
+    cflags: PRIVATE_LOCAL_CFLAGS,
+    vendor: true,
+
+}
+
+//
+// canplayer
+//
+
+cc_binary {
+    name: "canplayer",
+
+    srcs: ["canplayer.c"],
+
+    static_libs: ["libcan"],
+    local_include_dirs: ["include/"],
+    cflags: PRIVATE_LOCAL_CFLAGS,
+    vendor: true,
+
+}
+
+//
+// cansniffer
+//
+
+cc_binary {
+    name: "cansniffer",
+
+    srcs: ["cansniffer.c"],
+
+    local_include_dirs: ["include/"],
+    cflags: PRIVATE_LOCAL_CFLAGS,
+    vendor: true,
+
+}
+
+//
+// isotpdump
+//
+
+cc_binary {
+    name: "isotpdump",
+
+    srcs: ["isotpdump.c"],
+
+    local_include_dirs: ["include/"],
+    cflags: PRIVATE_LOCAL_CFLAGS,
+    vendor: true,
+
+}
+
+//
+// isotprecv
+//
+
+cc_binary {
+    name: "isotprecv",
+
+    srcs: ["isotprecv.c"],
+
+    local_include_dirs: ["include/"],
+    cflags: PRIVATE_LOCAL_CFLAGS,
+    vendor: true,
+
+}
+
+//
+// isotpsend
+//
+
+cc_binary {
+    name: "isotpsend",
+
+    srcs: ["isotpsend.c"],
+
+    local_include_dirs: ["include/"],
+    cflags: PRIVATE_LOCAL_CFLAGS,
+    vendor: true,
+
+}
+
+//
+// isotpserver
+//
+
+cc_binary {
+    name: "isotpserver",
+
+    srcs: ["isotpserver.c"],
+
+    local_include_dirs: ["include/"],
+    cflags: PRIVATE_LOCAL_CFLAGS,
+    vendor: true,
+
+}
+
+//
+// isotpsniffer
+//
+
+cc_binary {
+    name: "isotpsniffer",
+
+    srcs: ["isotpsniffer.c"],
+
+    local_include_dirs: ["include/"],
+    cflags: PRIVATE_LOCAL_CFLAGS,
+    vendor: true,
+
+}
+
+//
+// isotptun
+//
+
+cc_binary {
+    name: "isotptun",
+
+    srcs: ["isotptun.c"],
+
+    local_include_dirs: ["include/"],
+    cflags: PRIVATE_LOCAL_CFLAGS,
+    vendor: true,
+
+}
+
+//
+// isotpperf
+//
+
+cc_binary {
+    name: "isotpperf",
+
+    srcs: ["isotpperf.c"],
+
+    local_include_dirs: ["include/"],
+    cflags: PRIVATE_LOCAL_CFLAGS,
+    vendor: true,
+
+}
+
+//
+// log2asc
+//
+
+cc_binary {
+    name: "log2asc",
+
+    srcs: ["log2asc.c"],
+
+    static_libs: ["libcan"],
+    local_include_dirs: ["include/"],
+    cflags: PRIVATE_LOCAL_CFLAGS,
+    vendor: true,
+
+}
+
+//
+// asc2log
+//
+
+cc_binary {
+    name: "asc2log",
+
+    srcs: ["asc2log.c"],
+
+    static_libs: ["libcan"],
+    local_include_dirs: ["include/"],
+    cflags: PRIVATE_LOCAL_CFLAGS,
+    vendor: true,
+
+}
+
+//
+// log2long
+//
+
+cc_binary {
+    name: "log2long",
+
+    srcs: ["log2long.c"],
+
+    static_libs: ["libcan"],
+    local_include_dirs: ["include/"],
+    cflags: PRIVATE_LOCAL_CFLAGS,
+    vendor: true,
+
+}
+
+//
+// slcan_attach
+//
+
+cc_binary {
+    name: "slcan_attach",
+
+    srcs: ["slcan_attach.c"],
+
+    local_include_dirs: ["include/"],
+    cflags: PRIVATE_LOCAL_CFLAGS,
+    vendor: true,
+
+}
+
+//
+// slcand
+//
+
+cc_binary {
+    name: "slcand",
+
+    srcs: ["slcand.c"],
+
+    local_include_dirs: ["include/"],
+    cflags: PRIVATE_LOCAL_CFLAGS,
+    vendor: true,
+
+}
+
+//
+// slcanpty
+//
+
+cc_binary {
+    name: "slcanpty",
+
+    srcs: ["slcanpty.c"],
+
+    local_include_dirs: ["include/"],
+    cflags: PRIVATE_LOCAL_CFLAGS,
+    vendor: true,
+
+}
